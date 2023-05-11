@@ -1,5 +1,5 @@
 - name: Configure FortiGate interface
-  hosts: SW_Core_MA
+  hosts: FG_Mexico
   gather_facts: no
   tasks:
     - name: Configure interface
