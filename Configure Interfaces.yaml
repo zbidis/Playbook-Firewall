@@ -9,19 +9,19 @@
     description: Internal Network
   tasks:
     - name: Configure Interface
-      fortios_command:
-        cmd:
-          - "config system interface"
-          - "edit {{ interface_name }}"
-          - "set ip {{ ip_address }}"
-          - "set description {{ description }}"
-          - "next"
-          - "end"
+      fortinet.fortios.fortios_system_interface:
+        vdom: "root"
+        system_interface:
+          name: "{{ interface_name }}"
+          ip: "{{ ip_address }}"
+          description: "{{ description }}"
       register: interface_result
 
     - name: Show Interface Configuration
-      fortios_command:
-        cmd: "show system interface {{ interface_name }}"
+      fortinet.fortios.fortios_system_interface:
+        vdom: "root"
+        system_interface:
+          name: "{{ interface_name }}"
       register: show_result
 
     - name: Display Interface Configuration
