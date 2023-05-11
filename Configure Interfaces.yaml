@@ -3,7 +3,7 @@
   gather_facts: no
   collections:
     - fortinet.fortios
-  connection: network_cli
+  connection: fortiosapi
   vars:
     vdom: "root"
     ansible_network_os: fortios
