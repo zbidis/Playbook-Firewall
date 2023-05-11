@@ -3,27 +3,24 @@
   gather_facts: no
   collections:
     - fortinet.fortios
+  connection: paramiko
   vars:
-    interface_name: port2
-    ip_address: 192.168.1.2/24
-    description: Internal Network
+    vdom: "root"
+    ansible_httpapi_use_ssl: no
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 80
+    interface_name: "port2"
+    ip_address: "192.169.200.253/24"
+    description: "Internal Network"
   tasks:
-    - name: Configure Interface
-      fortinet.fortios.fortios_system_interface:
-        vdom: "root"
-        system_interface:
-          name: "{{ interface_name }}"
-          ip: "{{ ip_address }}"
-          description: "{{ description }}"
+    - name: Add IP address to Interface
+      fortios_system_interface:
+        vdom: "{{ vdom }}"
+        name: "{{ interface_name }}"
+        type: "physical"
+        interface: "{{ interface_name }}"
+        ip: "{{ ip_address }}"
+        state: present
       register: interface_result
-
-    - name: Show Interface Configuration
-      fortinet.fortios.fortios_system_interface:
-        vdom: "root"
-        system_interface:
-          name: "{{ interface_name }}"
-      register: show_result
-
-    - name: Display Interface Configuration
-      debug:
-        var: show_result.stdout_lines
+      vars:
+        ansible_python_interpreter: "/usr/bin/python3"
