@@ -1,13 +1,31 @@
 - name: Configure FortiGate interface
-  hosts: FG_Mexico
+  hosts: FG_Tunisia
   gather_facts: no
-
+  collections:
+  - fortinet.fortios
+  connection: httpapi
+  vars:
+   vdom: "root"
+   ansible_httpapi_use_ssl: no
+   ansible_httpapi_validate_certs: no
+   ansible_httpapi_port: 80
+   interface_name: "port2"
+   ip_address: "192.169.200.253/24"
+   description: "Internal Network"
   tasks:
-    - name: Set interface configuration
-      fortios_command:
-        host: "{{ ansible_host }}"
-        username: "{{ fortigate_username }}"
-        password: "{{ fortigate_password }}"
-        vdom: "{{ fortigate_vdom }}"
-        command: "config system interface\nedit port2\nset ip 192.168.1.2/24\nend"
+
+
+    - name: Add IP address to Interface
+      fortios_system_interface:
+        vdom: "root"
+        system_interface:
+          vdom: "root"
+          name: "port2"
+         # vlanid: 2
+          type: "physical"
+          interface: "{{ interface_name }}"
+          ip: "{{ ip_address }}"
+        state: present
+      register: interface_result
+
 
