@@ -1,25 +1,29 @@
 - name: Configure FortiGate interface
-  hosts: FG_Site_Tunisia
+  hosts: FG_Tunisia
   gather_facts: no
   collections:
     - fortinet.fortios
   vars:
-    vdom: "root"
-    ansible_httpapi_use_ssl: no
-    ansible_httpapi_validate_certs: no
-    ansible_httpapi_port: 80
-    interface_name: "port2"
-    ip_address: "192.169.200.253/24"
-    description: "Internal Network"
+    interface_name: port2
+    ip_address: 192.168.1.2/24
+    description: Internal Network
   tasks:
-    - name: Add IP address to Interface
-      fortios_system_interface:
-        vdom: "{{ vdom }}"
-        name: "{{ interface_name }}"
-        type: "physical"
-        interface: "{{ interface_name }}"
-        ip: "{{ ip_address }}"
-        state: present
+    - name: Configure Interface
+      fortios_command:
+        cmd:
+          - "config system interface"
+          - "edit {{ interface_name }}"
+          - "set ip {{ ip_address }}"
+          - "set description {{ description }}"
+          - "next"
+          - "end"
       register: interface_result
-      vars:
-        ansible_python_interpreter: "/usr/bin/python3"
+
+    - name: Show Interface Configuration
+      fortios_command:
+        cmd: "show system interface {{ interface_name }}"
+      register: show_result
+
+    - name: Display Interface Configuration
+      debug:
+        var: show_result.stdout_lines
