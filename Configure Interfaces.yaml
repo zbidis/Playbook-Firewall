@@ -1,0 +1,16 @@
+- name: Configure FortiGate interface
+  hosts: SW_Core_MA
+  gather_facts: no
+  tasks:
+    - name: Configure interface
+      fortios_command:
+        cmd: system interface
+        params:
+          - "{{ interface_name }}"
+          - "set ip {{ interface_ip }}/{{ subnet_mask }}"
+          - "set allowaccess {{ allow_access }}"
+      register: result
+
+    - name: Show result
+      debug:
+        var: result.stdout_lines
