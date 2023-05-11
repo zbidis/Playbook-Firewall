@@ -2,15 +2,17 @@
   hosts: FG_Mexico
   gather_facts: no
   tasks:
-    - name: Configure interface
-      fortios_command:
-        cmd: system interface
-        params:
-          - "{{ interface_name }}"
-          - "set ip {{ interface_ip }}/{{ subnet_mask }}"
-          - "set allowaccess {{ allow_access }}"
-      register: result
+    - name: Set interface configuration
+      fortinet.console.system_interface:
+        host: "{{ ansible_host }}"
+        username: "{{ fortigate_username }}"
+        password: "{{ fortigate_password }}"
+        interface: "port2"
+        ip: "192.168.1.2"
+        netmask: "255.255.255.0"
+        state: present
 
     - name: Show result
       debug:
-        var: result.stdout_lines
+        var: ansible_facts['fortinet_console_result']
+
