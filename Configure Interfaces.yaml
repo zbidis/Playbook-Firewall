@@ -2,7 +2,7 @@
   hosts: FG_Tunisia
   gather_facts: no
   collections:
-    - fortinet.fortios
+    - fortinet.fortios.fortios
   connection: httpapi
   vars:
     vdom: "root"
