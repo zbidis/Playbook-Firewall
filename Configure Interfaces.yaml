@@ -3,6 +3,7 @@
   gather_facts: no
   collections:
     - fortinet.fortios
+    - fortinet.console
   connection: httpapi
   vars:
     vdom: "root"
