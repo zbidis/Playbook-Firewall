@@ -2,14 +2,10 @@
   hosts: FG_Tunisia
   gather_facts: no
   collections:
-    - fortinet.fortios.fortios
-    - fortinet.console.console
-  connection: httpapi
+    - fortinet.fortios
+  connection: network_cli
   vars:
     vdom: "root"
-    ansible_httpapi_use_ssl: no
-    ansible_httpapi_validate_certs: no
-    ansible_httpapi_port: 80
     interface_name: "port2"
     ip_address: "192.169.200.253/24"
     description: "Internal Network"
@@ -23,5 +19,3 @@
         ip: "{{ ip_address }}"
         state: present
       register: interface_result
-      vars:
-        ansible_python_interpreter: "/usr/bin/python3"
