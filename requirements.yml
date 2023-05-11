@@ -1,0 +1,3 @@
+collections:
+- name: fortios_command
+  version: 2.2.3
