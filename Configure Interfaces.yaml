@@ -16,11 +16,9 @@
     - name: Add IP address to Interface
       fortios_system_interface:
         vdom: "{{ vdom }}"
-        system_interface:
-          vdom: "{{ vdom }}"
-          name: "{{ interface_name }}"
-          type: "physical"
-          interface: "{{ interface_name }}"
-          ip: "{{ ip_address }}"
+        name: "{{ interface_name }}"
+        type: "physical"
+        interface: "{{ interface_name }}"
+        ip: "{{ ip_address }}"
         state: present
       register: interface_result
