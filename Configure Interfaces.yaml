@@ -1,8 +1,9 @@
 - name: Configure FortiGate interface
-  hosts: FG_Tunisia
+  hosts: FG_Site_Tunisia
   gather_facts: no
   collections:
-    - fortinet.fortios.fortios
+    - fortinet.fortios
+  connection: httpapi
   vars:
     vdom: "root"
     ansible_httpapi_use_ssl: no
@@ -21,3 +22,5 @@
         ip: "{{ ip_address }}"
         state: present
       register: interface_result
+      vars:
+        ansible_python_interpreter: "/usr/bin/python3"
