@@ -1,18 +1,13 @@
 - name: Configure FortiGate interface
   hosts: FG_Mexico
   gather_facts: no
+
   tasks:
     - name: Set interface configuration
-      fortinet.console.system_interface:
+      fortios_command:
         host: "{{ ansible_host }}"
         username: "{{ fortigate_username }}"
         password: "{{ fortigate_password }}"
-        interface: "port2"
-        ip: "192.168.1.2"
-        netmask: "255.255.255.0"
-        state: present
-
-    - name: Show result
-      debug:
-        var: ansible_facts['fortinet_console_result']
+        vdom: "{{ fortigate_vdom }}"
+        command: "config system interface\nedit port2\nset ip 192.168.1.2/24\nend"
 
