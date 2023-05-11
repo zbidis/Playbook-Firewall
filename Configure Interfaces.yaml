@@ -3,7 +3,7 @@
   gather_facts: no
   collections:
     - fortinet.fortios
-  connection: openssh
+  connection: paramiko
   vars:
     vdom: "root"
     ansible_httpapi_use_ssl: no
