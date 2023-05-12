@@ -3,6 +3,7 @@
   gather_facts: no
   collections:
     - fortinet.fortios.fortios
+  connection: httpapi
   vars:
     ansible_connection: httpapi
     ansible_user: szbidi
@@ -11,13 +12,13 @@
     ansible_httpapi_port: 80
 
   tasks:
-    - name: Add IP address to Interface
-      fortinet.fortios.fortios_system_interface:
-        vdom: "root"
-        state: present
-        system_interface:
-        - name: "port2"
-          description: "Test Description"
-          ip: "192.168.50.254/24"
-      register: interface_result
+  - name: Add IP address to Interface
+    fortinet.fortios.fortios_system_interface:
+      vdom: "root"
+      state: present
+      system_interface:
+      - name: "port2"
+        description: "Test Description"
+        ip: "192.168.50.254/24"
+    register: interface_result
 
