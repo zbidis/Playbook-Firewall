@@ -14,7 +14,6 @@
     ansible_httpapi_use_ssl: false,
     ansible_httpapi_validate_certs: false
     ansible_httpapi_port: 80
-    interface_name: port2
     service: HTTP
     description: Internal-Network
     srcaddr: all
