@@ -22,5 +22,6 @@
         ap_discover: "enable"
         description: "<Test Description>"
         ip: "192.168.50.254/24"
+        name: "Inside"
     register: interface_result
 
