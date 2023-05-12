@@ -19,7 +19,7 @@
       system_interface:
         vdom: "root"
         interface: "port2"
-        vlanid: "50"
+        vlanid: "0"
         allowaccess: "ping"
         ap_discover: "enable"
         description: "Test Description"
