@@ -4,7 +4,7 @@
   collections:
     - fortinet.fortios.fortios
   vars:
-    ansible_connection: paramiko
+    ansible_connection: httpapi
     ansible_user: szbidi
     ansible_password: Cisco123*
 
