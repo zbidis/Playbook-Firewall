@@ -8,7 +8,7 @@
 
   tasks:
     - name: Add IP address to Interface
-      fortinet.fortios.system_interface:
+      fortinet.fortios.fortios_system_interface:
         vdom: "root"
         name: "port2"
         ip: "192.169.200.253/24"
