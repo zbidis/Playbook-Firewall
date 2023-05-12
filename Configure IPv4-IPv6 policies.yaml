@@ -20,7 +20,7 @@
     srcaddr: all
     schedule: always
     srcintf: port2
-    policyid: '1'
+    policyid: '5'
     name: po1,
     action: accept
     dstaddr: all
