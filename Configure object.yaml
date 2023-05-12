@@ -1,0 +1,20 @@
+- name: Configure FortiGate interface L2 Vlan
+  hosts: FG_Tunisia
+  gather_facts: no
+  collections:
+    - fortinet.fortios.fortios
+  connection: httpapi
+  vars:
+    ansible_connection: httpapi
+    ansible_user: szbidi
+    ansible_password: Cisco123*
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 80
+    {vdom: root, ansible_httpapi_use_ssl: false, ansible_httpapi_validate_certs: false, ansible_httpapi_port: 80, name: new1, comment: comment1, routing: disable, subnet: 192.168.200.15 255.255.255.0, IP: null}
+  tasks:
+  - name: Configure service groups.
+    fortios_firewall_address:
+      vdom: '{{vdom}}'
+      state: present
+      firewall_address: {comment: '{{comment}}', allow_routing: '{{routing}}', type: ipmask,
+        name: '{{name}}', subnet: '{{subnet}}'}
