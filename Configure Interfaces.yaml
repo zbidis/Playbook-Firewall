@@ -7,6 +7,8 @@
     ansible_connection: httpapi
     ansible_user: szbidi
     ansible_password: Cisco123*
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 80
 
   tasks:
     - name: Add IP address to Interface
