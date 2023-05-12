@@ -1,6 +1,7 @@
 - name: Configure FortiGate interface
   hosts: FG_Tunisia
   gather_facts: no
+  collection: fortinet.fortios.fortios
   vars:
     ansible_connection: paramiko
     ansible_user: szbidi
