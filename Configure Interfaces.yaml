@@ -14,8 +14,9 @@
     - name: Add IP address to Interface
       fortinet.fortios.fortios_system_interface:
         vdom: "root"
-        name: "port2"
-        ip: "192.169.200.253/24"
         state: present
+        system_interface:
+          description: "<your_own_value>"
+          ip: "192.168.50.254/24"
       register: interface_result
 
