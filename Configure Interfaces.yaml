@@ -17,6 +17,7 @@
       vdom: "root"
       state: present
       system_interface:
+        interface: "<port2> (source system.interface.name)"
         allowaccess: "ping"
         ap_discover: "enable"
         description: "<Test Description>"
