@@ -17,6 +17,7 @@
       vdom: "root"
       state: present
       system_interface:
+        vdom: "root"
         interface: "port2"
         allowaccess: "ping"
         ap_discover: "enable"
