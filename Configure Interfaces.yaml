@@ -16,7 +16,8 @@
         vdom: "root"
         state: present
         system_interface:
-          description: "<your_own_value>"
+        - name: "port2"
+          description: "<Test Description>"
           ip: "192.168.50.254/24"
       register: interface_result
 
