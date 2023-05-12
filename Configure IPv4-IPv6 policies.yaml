@@ -1,10 +1,31 @@
-- hosts: 192.168.254.10
-  collections: [fortinet.fortios]
+- name: Configure FortiGate interface L2 Vlan
+  hosts: FG_Tunisia
+  gather_facts: no
+  collections:
+    - fortinet.fortios.fortios
   connection: httpapi
-  vars: {vdom: root, ansible_httpapi_use_ssl: false, ansible_httpapi_validate_certs: false,
-    ansible_httpapi_port: 80, interface_name: port2, service: HTTP, description: Internal
-      Network, srcaddr: all, schedule: always, srcintf: port2, policyid: '1', name: po1,
-    action: accept, dstaddr: all, dstintf: port1, status: enable}
+  vars:
+    ansible_connection: httpapi
+    ansible_user: szbidi
+    ansible_password: Cisco123*
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 80
+    vdom: root
+    ansible_httpapi_use_ssl: false,
+    ansible_httpapi_validate_certs: false
+    ansible_httpapi_port: 80
+    interface_name: port2
+    service: HTTP
+    description: Internal-Network
+    srcaddr: all
+    schedule: always
+    srcintf: port2
+    policyid: '1'
+    name: po1,
+    action: accept
+    dstaddr: all
+    dstintf: port1
+    status: enable
   tasks:
 
   - name: Convert services string to list
