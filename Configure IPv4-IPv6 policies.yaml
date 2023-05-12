@@ -27,18 +27,7 @@
     status: enable
   tasks:
 
-  - name: Convert services string to list
-    set_fact: {service: '{{ service.split('','') | map(''trim'') | map(''regex_replace'',
-        ''^(.*)$'', ''{"name": "\1"}'') | map(''from_json'') | list }}'}
-
-  - name: Convert services string to list
-    set_fact: {srcaddr: '{{ srcaddr.split('','') | map(''trim'') | map(''regex_replace'',
-        ''^(.*)$'', ''{"name": "\1"}'') | map(''from_json'') | list }}'}
-
-  - name: Convert services string to list
-    set_fact: {dstaddr: '{{ dstaddr.split('','') | map(''trim'') | map(''regex_replace'',
-        ''^(.*)$'', ''{"name": "\1"}'') | map(''from_json'') | list }}'}
-
+ 
 
   - name: Configure IPv4/IPv6 policies.
     fortios_firewall_policy:
