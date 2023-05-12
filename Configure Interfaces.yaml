@@ -17,8 +17,9 @@
       vdom: "root"
       state: present
       system_interface:
-      - name: "port2"
-        description: "Test Description"
+        allowaccess: "ping"
+        ap_discover: "enable"
+        description: "<Test Description>"
         ip: "192.168.50.254/24"
     register: interface_result
 
