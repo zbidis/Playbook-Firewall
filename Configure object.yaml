@@ -10,7 +10,14 @@
     ansible_password: Cisco123*
     ansible_httpapi_validate_certs: no
     ansible_httpapi_port: 80
-    {vdom: root, ansible_httpapi_use_ssl: false, ansible_httpapi_validate_certs: false, ansible_httpapi_port: 80, name: new1, comment: comment1, routing: disable, subnet: 192.168.200.15 255.255.255.0, IP: null}
+    vdom: root
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    name: new1
+    comment: comment1
+    routing: disable
+    subnet: 192.168.200.15 255.255.255.0
+    IP: null}
   tasks:
   - name: Configure service groups.
     fortios_firewall_address:
