@@ -1,0 +1,42 @@
+- hosts: 192.168.254.10
+  collections: [fortinet.fortios]
+  connection: httpapi
+  vars: {vdom: root, ansible_httpapi_use_ssl: false, ansible_httpapi_validate_certs: false,
+    ansible_httpapi_port: 80, interface_name: port2, service: HTTP, description: Internal
+      Network, srcaddr: all, schedule: always, srcintf: port2, policyid: '1', name: po1,
+    action: accept, dstaddr: all, dstintf: port1, status: enable}
+  tasks:
+
+  - name: Convert services string to list
+    set_fact: {service: '{{ service.split('','') | map(''trim'') | map(''regex_replace'',
+        ''^(.*)$'', ''{"name": "\1"}'') | map(''from_json'') | list }}'}
+
+  - name: Convert services string to list
+    set_fact: {srcaddr: '{{ srcaddr.split('','') | map(''trim'') | map(''regex_replace'',
+        ''^(.*)$'', ''{"name": "\1"}'') | map(''from_json'') | list }}'}
+
+  - name: Convert services string to list
+    set_fact: {dstaddr: '{{ dstaddr.split('','') | map(''trim'') | map(''regex_replace'',
+        ''^(.*)$'', ''{"name": "\1"}'') | map(''from_json'') | list }}'}
+
+
+  - name: Configure IPv4/IPv6 policies.
+    fortios_firewall_policy:
+      vdom: '{{ vdom }}'
+      state: present
+      firewall_policy:
+        policyid: '{{ policyid }}'
+        name: '{{ name }}'
+        action: '{{ action }}'
+        srcintf:
+        - {name: '{{srcintf}}'}
+        dstintf:
+        - {name: '{{dstintf}}'}
+        srcaddr:
+        - {name: '{{srcaddr}}'}
+        dstaddr:
+        - {name: '{{dstaddr}}'}
+        service:
+        - {name: '{{ service }}'}
+        schedule: '{{ schedule }}'
+        status: '{{status}}'
