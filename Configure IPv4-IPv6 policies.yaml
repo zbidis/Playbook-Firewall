@@ -38,13 +38,13 @@
         name: '{{ name }}'
         action: '{{ action }}'
         srcintf:
-        - {name: '{{srcintf}}'}
+        - name: '{{srcintf}}'
         dstintf:
-        - {name: '{{dstintf}}'}
+        - name: '{{dstintf}}'
         srcaddr:
-        - {name: '{{srcaddr}}'}
+        - name: '{{srcaddr}}'
         dstaddr:
-        - {name: '{{dstaddr}}'}
+        - name: '{{dstaddr}}'
         service:
         - name: '{{ service }}'
         schedule: '{{ schedule }}'
