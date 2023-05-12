@@ -1,4 +1,4 @@
-- name: Configure FortiGate interface L2 Vlan
+- name: Create FortiGate Policy
   hosts: FG_Tunisia
   gather_facts: no
   collections:
