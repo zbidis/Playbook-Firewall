@@ -20,7 +20,7 @@
     schedule: always
     srcintf: port2
     policyid: '5'
-    name: po1,
+    name: policy01,
     action: accept
     dstaddr: all
     dstintf: port1
