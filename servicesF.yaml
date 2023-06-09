@@ -1,11 +1,11 @@
 ---
 - name: Créer un service sur le FortiGate FG101F
-  hosts: fortigate
+  hosts: FG_Tunisia
   gather_facts: no
   vars:
-    fortigate_host: "192.168.1.1"  # Remplacez par l'adresse IP du FortiGate
-    fortigate_username: "admin"    # Remplacez par le nom d'utilisateur
-    fortigate_password: "password" # Remplacez par le mot de passe
+    fortigate_host: "46.97.68.124"  # Remplacez par l'adresse IP du FortiGate
+    fortigate_username: "szbidi"    # Remplacez par le nom d'utilisateur
+    fortigate_password: "Cisco123*" # Remplacez par le mot de passe
 
   tasks:
     - name: Créer un service avec le port 444
