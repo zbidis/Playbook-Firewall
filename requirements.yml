@@ -1,8 +1,8 @@
 collections:
 - name: fortinet.console
   version: 0.2.2
-- name: fortinet.fortios
-  version: 2.2.3
+#- name: fortinet.fortios
+ # version: 2.2.3
 - name: fortinet.fortios
   version: 2.3.0
 
