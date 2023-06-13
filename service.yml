@@ -1,0 +1,33 @@
+---
+- name: Create Service Object on FortiGate
+  hosts: FG_Tunisia
+  gather_facts: no
+
+  tasks:
+    - name: Set variables
+      vars:
+        fortigate_host: "192.168.230.254"  # IP address of the FortiGate
+        fortigate_username: "szbidi"  # FortiGate username
+        fortigate_password: "Cisco123*"  # FortiGate password
+        service_name: "MyService"  # Name of the service object to create
+        service_protocol: "TCP"  # Protocol of the service object
+        service_port: "8080"  # Port number of the service object
+
+    - name: Create service object
+      fortios_command:
+        host: "{{ fortigate_host }}"
+        username: "{{ fortigate_username }}"
+        password: "{{ fortigate_password }}"
+        vdom: "root"  # Specify the VDOM if needed
+        command: "config firewall service custom"
+        nested_commands:
+          - "edit {{ service_name }}"
+          - "set protocol {{ service_protocol }}"
+          - "set tcp-portrange {{ service_port }}"
+          - "next"
+          - "end"
+      register: result
+
+    - name: Print result
+      debug:
+        var: result
